@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Serif TC", serif;
+}
+
+main {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+/* Nav */
+.logo {
+  width: 10rem;
+}
+
+nav li {
+  font-size: 2rem;
+}
+
+nav ul li {
+  padding: 0.5rem 0.75rem;
+}
+/* Contact Page */
+.contactForm {
+  margin-top: 3rem;
+  align-items: center;
+  width: 50rem;
+}
+
+
+
+.jumbotron h1,
+.jumbotron h2,
+.jumbotron h3,
+.jumbotron h6 {
+  text-align: center;
+}
+.container {
+  margin-top: 1rem;
+}
+
+/* About Me */
+.profileContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.profileLeft,
+.profileRight {
+  padding: 1rem;
+}
+
+.profileLeft {
+  flex: 1 1 400px;
+  align-items: center;
+}
+.profileRight {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 250px;
+}
+
+.myProfile {
+  margin-left: 50px;
+  display: inline-block;
+  width: 600px;
+  vertical-align: top;
+  margin-bottom: 80px;
+}
+
+.myInfo {
+  text-align: center;
+}
+#myPhoto {
+  width: 400px;
+  margin-left: 80px;
+  margin-right: 50px;
+  border-radius: 250px;
+}
+
+/* Projects Page */
+
+.projectsBox {
+  border-style: solid;
+  display: flex;
+  flex-direction: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.projectPic {
+  width: 500px;
+}
+.projectInfo {
+  margin: 20px;
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Services Page */
+.servicesBox {
+  text-align: center;
+}
+.servicesBox ul {
+  list-style-type: none;
+}

@@ -1,0 +1,50 @@
+<main class="container">
+  <div class="jumbotron">
+    <div>
+      <h2>My Contact Information</h2>
+      <h3>kw.wong0923@gmail.com</h3>
+      <h3>(647)-869-5717</h3>
+    </div>
+    <form class="contactForm" action="/contact/submit" method="POST">
+      <p class="formRow">
+        <label for="fullname">Name: </label>
+        <input
+          tpye="text"
+          id="fullname"
+          name="fullname"
+          placeholder="Your Name"
+          required
+        />
+      </p>
+
+      <p class="formRow">
+        <label for="age">Age: </label>
+        <input type="number" id="age" name="age" />
+      </p>
+
+      <p class="formRow">
+        <label for="email">Email: </label>
+        <input type="email" id="email" number="email" />
+      </p>
+
+      <p class="formRow">
+        <label for="phone">Phone: </label>
+        <input tpye="tel" id="phone" name="phone" />
+      </p>
+
+      <p class="formRow">
+        <label for="message">Message: </label>
+        <br />
+        <textarea
+          name="message"
+          id="message"
+          cols="30"
+          rows="10"
+          placeholder="Leave your message"
+        >
+        </textarea>
+      </p>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</main>

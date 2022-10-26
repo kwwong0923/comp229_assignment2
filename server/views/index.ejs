@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include partials/header.ejs %>
+</head>
+<body>
+    <%- include partials/main_nav.ejs %>
+    <main>
+
+        <% if (title == "Homepage"){%> 
+        <%- include pages/homepage.ejs %> 
+        <%} else if ( title == "About Me") {%> 
+        <%- include pages/aboutme.ejs %> 
+        <% } else if (title == "Projects Page"){ %>
+        <%- include pages/projects.ejs %> 
+        <% }else if (title == "Services Page"){ %>
+        <%- include pages/services.ejs %>
+        <%} else if (title == "Contact Me") {%> 
+        <%- include pages/contact.ejs %> 
+        <% }; %> 
+    </main>
+    <%- include partials/bottom_nav.ejs %>
+    <%- include partials/footer.ejs %>
+</body>
+</html>
