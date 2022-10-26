@@ -23,15 +23,15 @@ function requireAuth(req, res, next)
 router.get("/", contactController.displayContactPage);
 router.post("/", contactController.processContactPage);
 
-router.get("/list",requireAuth, contactController.displayContactList);
+router.get("/list", contactController.displayContactList);
 
 // edit page
 // GET - display the tagert contact info
-router.get("/edit/:id", requireAuth,  contactController.displayEditPage);
+router.get("/edit/:id",   contactController.displayEditPage);
 // POST - replace the value by user input
-router.post("/edit/:id", requireAuth, contactController.processEditPage);
+router.post("/edit/:id",  contactController.processEditPage);
 
 // GET - delete info
-router.get("/delete/:id", requireAuth, contactController.processDeletePage);
+router.get("/delete/:id",  contactController.processDeletePage);
 
 module.exports = router;

@@ -18,16 +18,16 @@
                     <th></th>
                 </tr>
 
-                <% data.forEach((contact) => { %>
+                <% data.forEach((date) => { %>
                     <tr>
-                        <td><%= contact.name %></td>
-                        <td><%= contact.phone %></td>
-                        <td><%= contact.email %></td>
+                        <td><%= date.name %></td>
+                        <td><%= date.phone %></td>
+                        <td><%= date.email %></td>
                         <td>
-                            <a href="/business/edit/<%= contact._id%>">Edit</a>
+                            <a href="/business/edit/<%= date._id%>">Edit</a>
                         </td>
                         <td>
-                            <a href="/business/delete/<%= contact._id%>">Delete</a>
+                            <a href="/business/delete/<%= date._id%>">Delete</a>
                         </td>
                     </tr>                
                 <% }); %> 

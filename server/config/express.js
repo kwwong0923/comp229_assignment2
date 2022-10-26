@@ -1,3 +1,4 @@
+// 3rd party moduels
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -5,7 +6,8 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
-const flash = require("flash");
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 // require own modules
 const db = require("./db");
 
@@ -16,6 +18,10 @@ let passport = require('passport');
 let passportJWT = require('passport-jwt');
 let JWTStrategy = passportJWT.Strategy;
 let ExtractJWT = passportJWT.ExtractJwt;
+
+let passportLocal = require('passport-local');
+let localStrategy = passportLocal.Strategy;
+let flash = require('connect-flash');
 
 
 // require all the route js file
@@ -30,7 +36,10 @@ app.set("views", viewsLocation);
 app.set("view engine", "ejs");
 // app.set('views', '../views');
 
-
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 // locate the static file
 app.use(express.static(path.join(__dirname, "../../public")));
 app.use(express.static(path.join(__dirname, "../../node_modules")));

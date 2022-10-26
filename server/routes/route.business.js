@@ -18,15 +18,15 @@ function requireAuth(req, res, next)
     next();
 }
 
-router.get("/",requireAuth, businessController.displayBusinessPage);
+router.get("/", businessController.displayBusinessPage);
 
-router.get("/add",requireAuth, businessController.displayAddPage);
-router.post("/add",requireAuth, businessController.processAddPage);
+router.get("/add", businessController.displayAddPage);
+router.post("/add", businessController.processAddPage);
 
-router.get("/edit/:id",requireAuth, businessController.displayEditPage);
-router.post("/edit/:id",requireAuth, businessController.processEditPage);
+router.get("/edit/:id", businessController.displayEditPage);
+router.post("/edit/:id", businessController.processEditPage);
 
-router.get("/delete/:id",requireAuth, businessController.processDeletePage);
+router.get("/delete/:id", businessController.processDeletePage);
 
 
 
