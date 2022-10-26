@@ -33,6 +33,6 @@ let contactSchema = mongoose.Schema(
         collection: "contact"
     }
 )
-
+const Contact = mongoose.model("Contact", contactSchema);
 // exports
-module.exports = mongoose.model("Contact", contactSchema);
+module.exports = Contact;

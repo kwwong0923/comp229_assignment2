@@ -1,13 +1,27 @@
 const express = require("express");
 const app = express();
-
+const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const path = require("path");
+const methodOverride = require("method-override");
+const flash = require("flash");
 // require own modules
-const db = require("./mongoose");
+const db = require("./db");
 
+// modules for authentication
+let session = require('express-session');
+let passport = require('passport');
+
+let passportJWT = require('passport-jwt');
+let JWTStrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
+
+
+// require all the route js file
 let indexRouter = require("../routes/route.index");
+let contactRouter = require("../routes/route.contact");
+let businessRouter = require("../routes/route.business");
 
 //-------set up for ejs---------
 // view engine setup
@@ -18,20 +32,61 @@ app.set("view engine", "ejs");
 
 
 // locate the static file
-const publicLocation = path.join(__dirname, "../../public");
-console.log(publicLocation)
-app.use(express.static(publicLocation));
-// console.log(path.join(__dirname + "../../public"));
+app.use(express.static(path.join(__dirname, "../../public")));
 app.use(express.static(path.join(__dirname, "../../node_modules")));
+// method override
+app.use(methodOverride("_method"));
+// grabs information from the post data form.
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// setup express session
+app.use(session({
+    secret: "SomeSecret",
+    saveUninitialized: false,
+    resave: false
+}));
+
+// initialize flash
+app.use(flash());
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// passport user configuration
+// create a User Model Instance
+let userModel = require('../models/model.user');
+let User = userModel.User;
+
+// implement a User Authentication Strategy
+passport.use(User.createStrategy());
 
 
+// serialize and deserialize the User info
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
+let jwtOptions = {};
+jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = db.Secret;
 
-// require routing js file
+let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
+  User.findById(jwt_payload.id)
+    .then(user => {
+      return done(null, user);
+    })
+    .catch(err => {
+      return done(err, false);
+    });
+});
+
+passport.use(strategy);
+
 
 // handling website routing
 app.use("/", indexRouter);
-
+app.use("/contact", contactRouter);
+app.use("/business", businessRouter);
 
 module.exports = app;
 

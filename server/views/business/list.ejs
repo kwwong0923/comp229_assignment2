@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ../partials/header.ejs %>
+</head>
+<body>
+    <%- include ../partials/main_nav.ejs %>
+    <main class="container">
+        <div class="jumbotron">
+            <h1>Business List</h1>
+            <a href="/business/add">Add a Business Contact</a>
+            <table>
+                <tr>
+                    <th>Contact Name</th>
+                    <th>Contact Number</th>
+                    <th>Email Address</th>                
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                <% data.forEach((contact) => { %>
+                    <tr>
+                        <td><%= contact.name %></td>
+                        <td><%= contact.phone %></td>
+                        <td><%= contact.email %></td>
+                        <td>
+                            <a href="/business/edit/<%= contact._id%>">Edit</a>
+                        </td>
+                        <td>
+                            <a href="/business/delete/<%= contact._id%>">Delete</a>
+                        </td>
+                    </tr>                
+                <% }); %> 
+            </table>
+        </div>
+    </main>
+    <%- include ../partials/bottom_nav.ejs %>
+    <%- include ../partials/footer.ejs %>
+</body>
+</html>

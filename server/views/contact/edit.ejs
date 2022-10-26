@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ../partials/header.ejs %>
+</head>
+<body>
+    <%- include ../partials/main_nav.ejs %>
+    <main class="container">
+      <div class="jumbotron">
+        <form class="contactForm" action="/contact/edit/<%= data._id %>?_method=PUT " method="POST">
+          <p class="formRow">
+            <label for="name">Name: </label>
+            <input
+              tpye="text"
+              id="name"
+              name="name"
+              value="<%= data.name %>"
+              required
+            />
+          </p>
+    
+          <p class="formRow">
+            <label for="age">Age: </label>
+            <input 
+              type="number" 
+              id="age" 
+              name="age"
+              value="<%= data.age %>" />
+          </p>
+    
+          <p class="formRow">
+            <label for="email">Email: </label>
+            <input 
+              type="text" 
+              id="email" 
+              name="email" 
+              value="<%= data.email %>"
+              />
+          </p>
+    
+          <p class="formRow">
+            <label for="phone">Phone: </label>
+            <input 
+              tpye="tel" 
+              id="phone" 
+              name="phone" 
+              value="<%= data.phone %>"/>
+          </p>
+    
+          <p class="formRow">
+            <label for="message">Message: </label>
+            <br />
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+              value="<%= data.message %>"
+            >
+            </textarea>
+          </p>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </main>
+
+    <%- include ../partials/bottom_nav.ejs %>
+    <%- include ../partials/footer.ejs %>
+</body>
+</html>

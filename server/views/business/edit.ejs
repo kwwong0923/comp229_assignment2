@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ../partials/header.ejs %>
+</head>
+<body>
+    <%- include ../partials/main_nav.ejs %>
+    <main class="container">
+      <div class="jumbotron">
+        <form class="contactForm" action="/business/edit/<%= data._id %>" method="POST">
+          <p class="formRow">
+            <label for="name">Name: </label>
+            <input
+              tpye="text"
+              id="name"
+              name="name"
+              value="<%= data.name %>"
+              required
+            />
+          </p>
+    
+          <p class="formRow">
+            <label for="phone">Phone: </label>
+            <input 
+              tpye="tel" 
+              id="phone" 
+              name="phone" 
+              value="<%= data.phone %>"/>
+          </p>
+    
+          <p class="formRow">
+            <label for="email">Email: </label>
+            <input 
+              type="text" 
+              id="email" 
+              name="email" 
+              value="<%= data.email %>"
+              />
+          </p>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </main>
+
+    <%- include ../partials/bottom_nav.ejs %>
+    <%- include ../partials/footer.ejs %>
+</body>
+</html>
