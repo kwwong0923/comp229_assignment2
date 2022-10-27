@@ -1,13 +1,17 @@
 {
-  "name": "a2rebot",
+  "name": "a2",
   "version": "1.0.0",
-  "description": "",
+  "description": "comp299_assignment2",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "engines": {
+    "node": "^12.18.3",
+    "npm": "^6.0.0"
+  },
+  "author": "Ka Wai Wong",
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.0",
@@ -45,5 +49,12 @@
     "@types/passport-jwt": "^3.0.3",
     "@types/passport-local": "^1.0.33",
     "@types/passport-local-mongoose": "^4.0.13"
+  },
+  "repository" : {
+    "type": "git",
+    "url" : "git+https://github.com/kwwong0923/comp229_assignment2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kwwong0923/comp229_assignment2/issues"
   }
 }
