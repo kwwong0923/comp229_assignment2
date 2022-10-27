@@ -54,10 +54,8 @@ module.exports.displayLoginPage = (req, res, next) =>
 
 module.exports.processLoginPage = (req, res, next) =>
 {
-    console.log("processLoginPage");
     passport.authenticate("local", (err, user, info) => 
     {
-        console.log("authenticate");
         if(err)
         {
             console.log("error");
@@ -66,8 +64,6 @@ module.exports.processLoginPage = (req, res, next) =>
         }
         if(!user)
         {
-            console.log("!user");
-
             req.flash("loginMessage", "Autherntication Error");
             return res.redirect("/login");
         }
