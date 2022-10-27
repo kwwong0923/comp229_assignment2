@@ -2,11 +2,10 @@
 // require the app.js from config file
 const app = require("./server/config/express");
 const mongoose = require("./server/config/mongoose");
-// run one time
 const db = mongoose();
 
+app.set("port", (process.env.PORT || 3000));
 
-
-app.listen(3000, ()=>{
+app.listen(app.get("port"), ()=>{
     console.log("Server is running in port3000");
 });
