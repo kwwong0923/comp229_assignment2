@@ -11,22 +11,22 @@ let User = userModel.User; // alias
 
 module.exports.displayHomepage = (req, res) =>
 {
-    res.render("index",{ title: "Homepage"});
+    res.render("index",{ title: "Homepage", username: req.user? req.user.username : ""});
 };
 
 module.exports.displayAboutMe = (req, res) =>
 {
-    res.render("index", { title: "About Me"});
+    res.render("index", { title: "About Me", username: req.user? req.user.username : ""});
 };
 
 module.exports.displayProjectPage = (req, res) =>
 {
-    res.render("index", { title: "Projects Page"});
+    res.render("index", { title: "Projects Page", username: req.user? req.user.username : ""});
 };
 
 module.exports.displayServicesPage = (req, res) =>
 {
-    res.render("index", { title: "Services Page"});
+    res.render("index", { title: "Services Page", username: req.user? req.user.username : ""});
 };
 
 module.exports.displayErrorPage = (req, res) => 
@@ -83,7 +83,7 @@ module.exports.processLoginPage = (req, res, next) =>
                 username: user.username,
             }
 
-            const authToken = jwt.sign(payload, DB.Secret, {
+            const authToken = jwt.sign(payload, db.Secret, {
                 expiresIn: 604800 // 1 week
             });
 
@@ -147,6 +147,8 @@ module.exports.processRegisterPage = (req, res, next) =>
 }
 
 module.exports.performLogout = (req, res, next) => {
-    req.logout();
-    res.redirect('/');
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+      });
 }

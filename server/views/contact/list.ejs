@@ -7,33 +7,36 @@
     <%- include ../partials/main_nav.ejs %>
     <main class="container">
         <div class="jumbotron">
-            <h1>Message List</h1>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Phone</th>
-                    <th>Emaill</th>
-                    <th>Message</th>
-                    <th></th>
-                </tr>
-
-                <% data.forEach((contact) => { %>
+            <div class="offset-md-1 col-md-11">
+                <h1>Message List</h1>
+                <table class="table table-bordered table-striped table-hover">
                     <tr>
-                        <td><%= contact.name %></td>
-                        <td><%= contact.age %></td>
-                        <td><%= contact.phone %></td>
-                        <td><%= contact.email %></td>
-                        <td><%= contact.message %></td>
-                        <td>
-                            <a href="/contact/edit/<%= contact._id%>">Edit</a>
-                        </td>
-                        <td>
-                            <a href="/contact/delete/<%= contact._id%>">Delete</a>
-                        </td>
-                    </tr>                
-                <% }); %> 
-            </table>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Phone</th>
+                        <th>Emaill</th>
+                        <th>Message</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+
+                    <% data.forEach((contact) => { %>
+                        <tr>
+                            <td><%= contact.name %></td>
+                            <td><%= contact.age %></td>
+                            <td><%= contact.phone %></td>
+                            <td><%= contact.email %></td>
+                            <td><%= contact.message %></td>
+                            <td>
+                                <a href="/contact/edit/<%= contact._id%>">Edit</a>
+                            </td>
+                            <td>
+                                <a href="/contact/delete/<%= contact._id%>">Delete</a>
+                            </td>
+                        </tr>                
+                    <% }); %> 
+                </table>
+            </div>            
         </div>
     </main>
     <%- include ../partials/bottom_nav.ejs %>

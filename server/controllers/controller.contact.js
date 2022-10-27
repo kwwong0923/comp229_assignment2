@@ -45,7 +45,7 @@ module.exports.displayContactList = async (req, res) =>
     try
     {
         let data = await Contact.find();
-        res.render("contact/list", {data, title: "Contact List"});
+        res.render("contact/list", {data, title: "Contact List", username: req.user? req.user.username : ""});
     }
     catch
     {
@@ -62,7 +62,7 @@ module.exports.displayEditPage = async (req, res) =>
         let data = await Contact.findOne({_id: id});
         if (data !== null)
         {
-            res.render("contact/edit", {data, title: "Edit"});
+            res.render("contact/edit", {data, title: "Edit", username: req.user? req.user.username : ""});
         }
         else
         {
@@ -91,21 +91,6 @@ module.exports.processEditPage = async (req, res) =>
             message
         }
     );
-    // try
-    // {
-    //     let  editContact = Contact.findOneAndUpdate({_id : id},req.body,
-    //         {
-    //             new: true,
-    //             runValidators: true,
-    //         }
-    //     );
-    //     console.log(editContact);
-    //     res.redirect("/contact/list");
-    // }
-    // catch
-    // {
-    //     res.redirect("reject");
-    // }
     
     Contact.updateOne({_id: id}, editedContact, (e) => 
     {
@@ -136,14 +121,4 @@ module.exports.processDeletePage = (req, res) =>
             res.redirect("/contact/list");
         }
     });
-    
-    // Contact.findOneAndDelete({_id: id})
-    //     .then(()=>
-    //     {
-    //         console.log("deleted");
-    //     })
-    //     .catch((e)=>
-    //     {
-    //         console.log(e);
-    //     })
 }

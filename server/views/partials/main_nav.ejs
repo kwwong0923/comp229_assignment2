@@ -1,7 +1,7 @@
 <!-- Nav bar -->
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img class="logo" src="images/logo.png"></a>
+        <a class="navbar-brand" href="/"><img class="logo" src="\images\logo.png"></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -56,7 +56,7 @@
                 <a class="nav-link active" href="/contact/">
               <%} else {%> 
                 <a class="nav-link" href="/contact/">
-                <% } %><i class="fa-solid fa-phone"></i>Contact Me</a>
+                <% } %><i class="fa-solid fa-phone"></i>Contact</a>
             </li>
 
             <li class="nav-item">
@@ -74,22 +74,15 @@
                 <a class="nav-link" href="/business">
                 <% } %><i class="fa-solid fa-business-time"></i>Business</a>
             </li>
-            <li class="nav-item">
-              <%if (title == "Contact List") { %>
-                <a class="nav-link active" href="/login">
-              <%} else {%> 
-                <a class="nav-link" href="/login">
-                <% } %><i class="fa-solid fa-right-to-bracket"></i>Login</a>
-            </li>
 
-            <li class="nav-item">
-              <%if (title == "Contact List") { %>
-                <a class="nav-link active" href="/register">
-              <%} else {%> 
-                <a class="nav-link" href="/register">
-                <% } %><i class="fa-solid fa-registered"></i>Register</a>
-            </li>
-            
+            <% if(typeof username == "string" && username){ %> 
+              <li class="navbar-text username"><i class="fas fa-lg fa-user">Weclome, <%= username %></i></li>
+              <li class="nav-item"><a href="/logout" class="nav-link"><i class="fas fa-lg fa-sing-out-alt"></i>Logout</a></li>
+            <%} else {%>
+              <li class="nav-item"><a href="/login" class="nav-link"><i class="fas fa-lg fa-sign-in-alt"></i>Login</a></li>
+              <li class="nav-item"><a href="/register" class="nav-link"><i class="fa-solid fa-registered"></i>Register</a></li>
+
+              <% } %>
         </div>
       </div>
     </nav>

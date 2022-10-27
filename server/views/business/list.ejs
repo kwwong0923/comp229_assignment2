@@ -7,31 +7,33 @@
     <%- include ../partials/main_nav.ejs %>
     <main class="container">
         <div class="jumbotron">
-            <h1>Business List</h1>
-            <a href="/business/add">Add a Business Contact</a>
-            <table>
-                <tr>
-                    <th>Contact Name</th>
-                    <th>Contact Number</th>
-                    <th>Email Address</th>                
-                    <th></th>
-                    <th></th>
-                </tr>
-
-                <% data.forEach((date) => { %>
+            <div class="offset-md-1 col-md-11">
+                <h1>Business List</h1>
+                <button><a href="/business/add">Add a Business Contact</a></button>
+                <table class="table table-bordered table-striped table-hover">
                     <tr>
-                        <td><%= date.name %></td>
-                        <td><%= date.phone %></td>
-                        <td><%= date.email %></td>
-                        <td>
-                            <a href="/business/edit/<%= date._id%>">Edit</a>
-                        </td>
-                        <td>
-                            <a href="/business/delete/<%= date._id%>">Delete</a>
-                        </td>
-                    </tr>                
-                <% }); %> 
-            </table>
+                        <th>Contact Name</th>
+                        <th>Contact Number</th>
+                        <th>Email Address</th>                
+                        <th></th>
+                        <th></th>
+                    </tr>
+    
+                    <% data.forEach((date) => { %>
+                        <tr>
+                            <td><%= date.name %></td>
+                            <td><%= date.phone %></td>
+                            <td><%= date.email %></td>
+                            <td>
+                                <a href="/business/edit/<%= date._id%>">Edit</a>
+                            </td>
+                            <td>
+                                <a href="/business/delete/<%= date._id%>">Delete</a>
+                            </td>
+                        </tr>                
+                    <% }); %> 
+                </table>
+            </div>            
         </div>
     </main>
     <%- include ../partials/bottom_nav.ejs %>

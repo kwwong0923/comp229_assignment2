@@ -6,7 +6,7 @@ module.exports.displayBusinessPage = async(req, res)=>
     try
     {
         let data = await Business.find();
-        res.render("business/list", {data, title: "Business Contact List"})
+        res.render("business/list", {data, title: "Business Contact List", username: req.user? req.user.username : ""})
     }
     catch
     {
@@ -16,7 +16,7 @@ module.exports.displayBusinessPage = async(req, res)=>
 
 module.exports.displayAddPage = (req, res) =>
 {
-    res.render("business/add",{title: "Add Business Contact"});
+    res.render("business/add",{title: "Add Business Contact", username: req.user? req.user.username : ""});
 }   
 
 module.exports.processAddPage = (req, res) =>
@@ -57,7 +57,7 @@ module.exports.displayEditPage = async (req, res) =>
         let data = await Business.findOne({_id: id});
         if(data !== null)
         {
-            res.render("business/edit", {data, title: "Edit"});
+            res.render("business/edit", {data, title: "Edit", username: req.user? req.user.username : ""});
         }
         else
         {
